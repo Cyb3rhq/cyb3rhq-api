@@ -1,7 +1,7 @@
 /**
- * Wazuh API RESTful
- * Copyright (C) 2015-2020 Wazuh, Inc.  All rights reserved.
- * Wazuh.com
+ * Cyb3rhq API RESTful
+ * Copyright (C) 2015-2020 Cyb3rhq, Inc.  All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -121,7 +121,7 @@ var current_mm_version = version_mmp[0] + '.' + version_mmp[1]; // major.minor
 if (process.argv.length == 3 && process.argv[2] == "-f")
     logger.set_foreground();
 
-if (check.wazuh(logger) < 0) {
+if (check.cyb3rhq(logger) < 0) {
     setTimeout(function(){ process.exit(1); }, 500);
     return;
 }
@@ -172,12 +172,12 @@ app.use(bodyParser.raw({type:"application/octet-stream", limit:"10mb"}));
 
 
 /**
- * Check Wazuh app version
- * Using: Header: "wazuh-app-version: X.Y.Z"
+ * Check Cyb3rhq app version
+ * Using: Header: "cyb3rhq-app-version: X.Y.Z"
  */
 app.use(function(req, res, next) {
     var go_next = true;
-    var app_version_header = req.get('wazuh-app-version');
+    var app_version_header = req.get('cyb3rhq-app-version');
     var regex_version = /^\d+\.\d+\.\d+$/i;
 
     if (typeof app_version_header != 'undefined'){

@@ -1,7 +1,7 @@
 /**
- * Wazuh RESTful API
- * Copyright (C) 2015-2020 Wazuh, Inc. All rights reserved.
- * Wazuh.com
+ * Cyb3rhq RESTful API
+ * Copyright (C) 2015-2020 Cyb3rhq, Inc. All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -61,7 +61,7 @@ errors['620'] = "Param not valid. Valid values: yes or no";
 errors['array_names'] = 621;
 errors['621'] = "Invalid character in parameters";
 errors['query_param'] = 622;
-errors['622'] = 'Param not valid. Review queries documentation: https://documentation.wazuh.com/current/user-manual/api/queries.html'
+errors['622'] = 'Param not valid. Review queries documentation: https://documentation.cyb3rhq.com/current/user-manual/api/queries.html'
 errors['empty_boolean'] = 623;
 errors['623'] = 'Param not valid. Valid values: true,false or empty(true)';
 errors['array'] = 624;
@@ -76,9 +76,9 @@ errors['706'] = "'path' parameter is mandatory";
 
 // Headers
 errors['800'] = "Error adding agent due to header 'x-forwarded-for' is not present";
-errors['801'] = "Wrong format for 'wazuh-app-version' header. Expected format: 'X.Y.Z'";
-errors['802'] = "Invalid 'wazuh-app-version' header";
-errors['803'] = "Wazuh API is only available for master nodes";
+errors['801'] = "Wrong format for 'cyb3rhq-app-version' header. Expected format: 'X.Y.Z'";
+errors['802'] = "Invalid 'cyb3rhq-app-version' header";
+errors['803'] = "Cyb3rhq API is only available for master nodes";
 errors['804'] = "Invalid content-type for this request. Content-type should be 'application/xml' or 'application/octet-stream'";
 
 exports.description = function(n){

@@ -1,7 +1,7 @@
 /**
  * API RESTful for OSSEC
- * Copyright (C) 2015-2016 Wazuh, Inc.All rights reserved.
- * Wazuh.com
+ * Copyright (C) 2015-2016 Cyb3rhq, Inc.All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -1141,7 +1141,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/master/files?path=" + path_lists + "&overwrite=true")
             .set("Content-Type", "application/octet-stream")
-            .send("test-wazuh-w:write\ntest-wazuh-r:read\ntest-wazuh-a:attribute\ntest-wazuh-x:execute\ntest-wazuh-c:command\n")
+            .send("test-cyb3rhq-w:write\ntest-cyb3rhq-r:read\ntest-cyb3rhq-a:attribute\ntest-cyb3rhq-x:execute\ntest-cyb3rhq-c:command\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(200)
@@ -1161,7 +1161,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/master/files?path=" + path_lists + "&overwrite=true")
             .set("Content-Type", "application/octet-stream")
-            .send("test-wazuh-w:write\ntest-wazuh-r:read\ntest-wazuh-a:attribute\ntest-wazuh-x:execute\ntest-wazuh-c:command\n")
+            .send("test-cyb3rhq-w:write\ntest-cyb3rhq-r:read\ntest-cyb3rhq-a:attribute\ntest-cyb3rhq-x:execute\ntest-cyb3rhq-c:command\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(200)
@@ -1181,7 +1181,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/master/files?path=" + path_lists + "&overwrite=false")
             .set("Content-Type", "application/octet-stream")
-            .send("test-wazuh-w:write\ntest-wazuh-r:read\ntest-wazuh-a:attribute\ntest-wazuh-x:execute\ntest-wazuh-c:command\n")
+            .send("test-cyb3rhq-w:write\ntest-cyb3rhq-r:read\ntest-cyb3rhq-a:attribute\ntest-cyb3rhq-x:execute\ntest-cyb3rhq-c:command\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(200)
@@ -1201,7 +1201,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/master/files?path=" + path_ossec_conf + "&overwrite=true")
             .set("Content-Type", "application/xml")
-            .send("<!--  Wazuh - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output><<<<yes</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.wazuh.com</smtp_server>\n      <email_from>ossecm@example.wazuh.com</email_from>\n      <email_to>recipient@example.wazuh.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n  </ossec_config>\n")
+            .send("<!--  Cyb3rhq - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output><<<<yes</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.cyb3rhq.com</smtp_server>\n      <email_from>ossecm@example.cyb3rhq.com</email_from>\n      <email_to>recipient@example.cyb3rhq.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n  </ossec_config>\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(400)
@@ -1221,7 +1221,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/worker-1/files?path=" + path_ossec_conf + "&overwrite=true")
             .set("Content-Type", "application/xml")
-            .send("<!--  Wazuh - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output><<<<yes</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.wazuh.com</smtp_server>\n      <email_from>ossecm@example.wazuh.com</email_from>\n      <email_to>recipient@example.wazuh.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n  </ossec_config>\n")
+            .send("<!--  Cyb3rhq - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output><<<<yes</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.cyb3rhq.com</smtp_server>\n      <email_from>ossecm@example.cyb3rhq.com</email_from>\n      <email_to>recipient@example.cyb3rhq.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n  </ossec_config>\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(400)
@@ -1322,7 +1322,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/master/files?path=" + path_lists + "&overwrite=true")
             .set("Content-Type", "application/octet-stream")
-            .send(":write\ntest-wazuh-r:read\ntest-wazuh-a:attribute\ntest-wazuh-x:execute\ntest-wazuh-c:command\n")
+            .send(":write\ntest-cyb3rhq-r:read\ntest-cyb3rhq-a:attribute\ntest-cyb3rhq-x:execute\ntest-cyb3rhq-c:command\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(400)
@@ -1342,7 +1342,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/TESTNODE001/files?path=" + path_lists)
             .set("Content-Type", "application/octet-stream")
-            .send("test-wazuh-w:write\ntest-wazuh-r:read\ntest-wazuh-a:attribute\ntest-wazuh-x:execute\ntest-wazuh-c:command\n")
+            .send("test-cyb3rhq-w:write\ntest-cyb3rhq-r:read\ntest-cyb3rhq-a:attribute\ntest-cyb3rhq-x:execute\ntest-cyb3rhq-c:command\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(200)
@@ -1362,7 +1362,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/master/files")
             .set("Content-Type", "application/octet-stream")
-            .send("test&%-wazuh-w:write\ntest-wazuh-r:read\ntest-wazuh-a:attribute\ntest-wazuh-x:execute\ntest-wazuh-c:command\n")
+            .send("test&%-cyb3rhq-w:write\ntest-cyb3rhq-r:read\ntest-cyb3rhq-a:attribute\ntest-cyb3rhq-x:execute\ntest-cyb3rhq-c:command\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(400)
@@ -1382,7 +1382,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/master/files?path=etc/lists/new-list")
             .set("Content-Type", "application/x-www-form-urlencoded")
-            .send("test&%-wazuh-w:write\ntest-wazuh-r:read\ntest-wazuh-a:attribute\ntest-wazuh-x:execute\ntest-wazuh-c:command\n")
+            .send("test&%-cyb3rhq-w:write\ntest-cyb3rhq-r:read\ntest-cyb3rhq-a:attribute\ntest-cyb3rhq-x:execute\ntest-cyb3rhq-c:command\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(400)
@@ -1567,7 +1567,7 @@ describe('Cluster', function () {
 
         it('Request wrong path 3', function(done) {
             request(common.url)
-            .get("/cluster/master/files?path=./framework/wazuh/agent.py")
+            .get("/cluster/master/files?path=./framework/cyb3rhq/agent.py")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(400)
@@ -1725,7 +1725,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/master/files?path=" + path_ossec_conf + "&overwrite=true")
             .set("Content-Type", "application/xml")
-            .send("<!--  Wazuh - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output>WRONG_VALUE</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.wazuh.com</smtp_server>\n      <email_from>ossecm@example.wazuh.com</email_from>\n      <email_to>recipient@example.wazuh.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n <cluster>\n      <name>wazuh</name>\n      <node_name>master</node_name>\n      <node_type>master</node_type>\n      <key>XXXX</key>\n      <port>1516</port>\n      <bind_addr>192.168.122.111</bind_addr>\n      <nodes>\n        <node>192.168.122.111</node>\n      </nodes>\n      <hidden>no</hidden>\n      <disabled>no</disabled>\n    </cluster>\n  </ossec_config>\n")
+            .send("<!--  Cyb3rhq - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output>WRONG_VALUE</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.cyb3rhq.com</smtp_server>\n      <email_from>ossecm@example.cyb3rhq.com</email_from>\n      <email_to>recipient@example.cyb3rhq.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n <cluster>\n      <name>cyb3rhq</name>\n      <node_name>master</node_name>\n      <node_type>master</node_type>\n      <key>XXXX</key>\n      <port>1516</port>\n      <bind_addr>192.168.122.111</bind_addr>\n      <nodes>\n        <node>192.168.122.111</node>\n      </nodes>\n      <hidden>no</hidden>\n      <disabled>no</disabled>\n    </cluster>\n  </ossec_config>\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(200)
@@ -1830,7 +1830,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/worker-1/files?path=" + path_ossec_conf + "&overwrite=true")
             .set("Content-Type", "application/xml")
-            .send("<!--  Wazuh - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output>WRONG_VALUE</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.wazuh.com</smtp_server>\n      <email_from>ossecm@example.wazuh.com</email_from>\n      <email_to>recipient@example.wazuh.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n  </ossec_config>\n")
+            .send("<!--  Cyb3rhq - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output>WRONG_VALUE</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.cyb3rhq.com</smtp_server>\n      <email_from>ossecm@example.cyb3rhq.com</email_from>\n      <email_to>recipient@example.cyb3rhq.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n  </ossec_config>\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(200)
@@ -1936,7 +1936,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/master/files?path=" + path_ossec_conf + "&overwrite=true")
             .set("Content-Type", "application/xml")
-            .send("<!--  Wazuh - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output>WRONG_VALUE</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.wazuh.com</smtp_server>\n      <email_from>ossecm@example.wazuh.com</email_from>\n      <email_to>recipient@example.wazuh.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n <cluster>\n      <name>wazuh</name>\n      <node_name>master</node_name>\n      <node_type>master</node_type>\n      <key>XXXXX</key>\n      <port>1516</port>\n      <bind_addr>192.168.122.111</bind_addr>\n      <nodes>\n        <node>192.168.122.111</node>\n      </nodes>\n      <hidden>no</hidden>\n      <disabled>no</disabled>\n    </cluster>\n  </ossec_config>\n")
+            .send("<!--  Cyb3rhq - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output>WRONG_VALUE</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.cyb3rhq.com</smtp_server>\n      <email_from>ossecm@example.cyb3rhq.com</email_from>\n      <email_to>recipient@example.cyb3rhq.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n <cluster>\n      <name>cyb3rhq</name>\n      <node_name>master</node_name>\n      <node_type>master</node_type>\n      <key>XXXXX</key>\n      <port>1516</port>\n      <bind_addr>192.168.122.111</bind_addr>\n      <nodes>\n        <node>192.168.122.111</node>\n      </nodes>\n      <hidden>no</hidden>\n      <disabled>no</disabled>\n    </cluster>\n  </ossec_config>\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(200)
@@ -1957,7 +1957,7 @@ describe('Cluster', function () {
             request(common.url)
             .post("/cluster/worker-1/files?path=" + path_ossec_conf + "&overwrite=true")
             .set("Content-Type", "application/xml")
-            .send("<!--  Wazuh - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output>WRONG_VALUE</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.wazuh.com</smtp_server>\n      <email_from>ossecm@example.wazuh.com</email_from>\n      <email_to>recipient@example.wazuh.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n  </ossec_config>\n")
+            .send("<!--  Cyb3rhq - Manager -->\n  <ossec_config>\n    <global>\n      <jsonout_output>WRONG_VALUE</jsonout_output>\n      <alerts_log>yes</alerts_log>\n      <logall>no</logall>\n      <logall_json>no</logall_json>\n      <email_notification>no</email_notification>\n      <smtp_server>smtp.example.cyb3rhq.com</smtp_server>\n      <email_from>ossecm@example.cyb3rhq.com</email_from>\n      <email_to>recipient@example.cyb3rhq.com</email_to>\n      <email_maxperhour>12</email_maxperhour>\n      <email_log_source>alerts.log</email_log_source>\n      <queue_size>131072</queue_size>\n    </global>\n  </ossec_config>\n")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(200)
@@ -2629,7 +2629,7 @@ describe('Cluster', function () {
                 }
 
                 // list of modules which should be present in the request
-                module_list = ['cis-cat', 'database', 'open-scap', 'osquery', 'sca', 'syscollector', 'vulnerability-detector', 'wazuh_control', 'wazuh_download']
+                module_list = ['cis-cat', 'database', 'open-scap', 'osquery', 'sca', 'syscollector', 'vulnerability-detector', 'cyb3rhq_control', 'cyb3rhq_download']
 
                 // check modules
                 should((JSON.stringify(module_list.sort()))).be.eql(JSON.stringify(modules.sort()))

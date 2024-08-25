@@ -1,7 +1,7 @@
 /**
  * API RESTful for OSSEC
- * Copyright (C) 2015-2019 Wazuh, Inc.All rights reserved.
- * Wazuh.com
+ * Copyright (C) 2015-2019 Cyb3rhq, Inc.All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public

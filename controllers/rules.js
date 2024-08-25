@@ -1,7 +1,7 @@
 /**
- * Wazuh RESTful API
- * Copyright (C) 2015-2020 Wazuh, Inc. All rights reserved.
- * Wazuh.com
+ * Cyb3rhq RESTful API
+ * Copyright (C) 2015-2020 Cyb3rhq, Inc. All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -88,7 +88,7 @@ router.get('/groups', cache(), function(req, res) {
     if ('search' in req.query)
         data_request['arguments']['search'] = filter.search_param_to_json(req.query.search);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -127,7 +127,7 @@ router.get('/pci', cache(), function(req, res) {
     if ('search' in req.query)
         data_request['arguments']['search'] = filter.search_param_to_json(req.query.search);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 
@@ -167,7 +167,7 @@ router.get('/gpg13', cache(), function(req, res) {
     if ('search' in req.query)
         data_request['arguments']['search'] = filter.search_param_to_json(req.query.search);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 
@@ -207,7 +207,7 @@ router.get('/gdpr', cache(), function(req, res) {
     if ('search' in req.query)
         data_request['arguments']['search'] = filter.search_param_to_json(req.query.search);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 
@@ -247,7 +247,7 @@ router.get('/hipaa', cache(), function(req, res) {
     if ('search' in req.query)
         data_request['arguments']['search'] = filter.search_param_to_json(req.query.search);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 
@@ -287,7 +287,7 @@ router.get('/nist-800-53', cache(), function(req, res) {
     if ('search' in req.query)
         data_request['arguments']['search'] = filter.search_param_to_json(req.query.search);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -326,7 +326,7 @@ router.get('/tsc', cache(), function(req, res) {
     if ('search' in req.query)
         data_request['arguments']['search'] = filter.search_param_to_json(req.query.search);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -365,7 +365,7 @@ router.get('/mitre', cache(), function(req, res) {
     if ('search' in req.query)
         data_request['arguments']['search'] = filter.search_param_to_json(req.query.search);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 
@@ -418,7 +418,7 @@ router.get('/files', cache(), function(req, res) {
     if ('download' in req.query)
         res_h.send_file(req, res, req.query.download, 'rules');
     else
-        execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+        execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -463,7 +463,7 @@ router.get('/:rule_id', cache(), function(req, res) {
 
     data_request['arguments']['filters'] = {'id': req.params.rule_id};
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 

@@ -1,15 +1,15 @@
-# WAZUH API Service (Systemd unit)
+# CYB3RHQ API Service (Systemd unit)
 #
-# Copyright (C) 2015-2018 Wazuh, Inc. All rights reserved.
-# Wazuh.com
+# Copyright (C) 2015-2018 Cyb3rhq, Inc. All rights reserved.
+# Cyb3rhq.com
 # This program is a free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public
 # License (version 2) as published by the FSF - Free Software
 # Foundation.
 
 [Unit]
-Description=Wazuh API daemon
-Documentation=https://documentation.wazuh.com/current/user-manual/api/index.html
+Description=Cyb3rhq API daemon
+Documentation=https://documentation.cyb3rhq.com/current/user-manual/api/index.html
 After=network-online.target
 
 [Service]

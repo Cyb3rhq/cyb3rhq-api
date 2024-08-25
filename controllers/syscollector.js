@@ -1,7 +1,7 @@
 /**
- * Wazuh RESTful API
- * Copyright (C) 2015-2020 Wazuh, Inc. All rights reserved.
- * Wazuh.com
+ * Cyb3rhq RESTful API
+ * Copyright (C) 2015-2020 Cyb3rhq, Inc. All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public

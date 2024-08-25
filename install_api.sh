@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-# Copyright (C) 2015-2016 Wazuh, Inc.All rights reserved.
-# Wazuh.com
+# Copyright (C) 2015-2016 Cyb3rhq, Inc.All rights reserved.
+# Cyb3rhq.com
 # This program is a free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public
 # License (version 2) as published by the FSF - Free Software
 # Foundation.
 
-# Installer for Wazuh API
-# Wazuh Inc.
+# Installer for Cyb3rhq API
+# Cyb3rhq Inc.
 #
 # Usage:
 #  ./install_api.sh [dependencies|download|dev]
@@ -51,8 +51,8 @@ error_and_exit() {
         print "\t4. Restart API"
     fi
 
-    if [ -d "/root/wazuh-api-tmp" ]; then
-        exec_cmd "rm -rf /root/wazuh-api-tmp"
+    if [ -d "/root/cyb3rhq-api-tmp" ]; then
+        exec_cmd "rm -rf /root/cyb3rhq-api-tmp"
     fi
 
     print "\nExiting."
@@ -167,7 +167,7 @@ previous_checks() {
         API_SOURCES=`pwd`
     elif [ "X${arg}" == "Xdownload" ]; then   # download argument
         API_SOURCES="/root"
-        DOWNLOAD_PATH=$(url_latest_release "wazuh" "wazuh-api")
+        DOWNLOAD_PATH=$(url_latest_release "cyb3rhq" "cyb3rhq-api")
     else
         API_SOURCES="."  # empty argument
     fi
@@ -204,7 +204,7 @@ previous_checks() {
     serv_type=$(get_type_service)
 
     if ! [ -d $FRAMEWORK_PATH ]; then
-        print "Can't find $FRAMEWORK_PATH. Is Wazuh installed?.\nExiting."
+        print "Can't find $FRAMEWORK_PATH. Is Cyb3rhq installed?.\nExiting."
         exit 1
     fi
 
@@ -227,7 +227,7 @@ previous_checks() {
     NODE_VERSION=`$NODE_DIR --version | grep -P '^v\d+' -o | grep -P '\d+' -o`
 
     if [ $NODE_VERSION -lt 4 ]; then
-        print "The current version of NodeJS installed is not supported. Wazuh API requires NodeJS 4.x or newer."
+        print "The current version of NodeJS installed is not supported. Cyb3rhq API requires NodeJS 4.x or newer."
         print "Review the dependencies executing: ./install_api.sh dependencies"
         exit 1
     fi
@@ -240,23 +240,23 @@ get_api () {
     if [ "X$DOWNLOAD_PATH" != "X" ]; then
         print "\nDownloading API from $DOWNLOAD_PATH"
 
-        if [ -d "$API_SOURCES/wazuh-api-tmp" ]; then
-            exec_cmd "rm -rf $API_SOURCES/wazuh-api-tmp"
+        if [ -d "$API_SOURCES/cyb3rhq-api-tmp" ]; then
+            exec_cmd "rm -rf $API_SOURCES/cyb3rhq-api-tmp"
         fi
-        exec_cmd "mkdir -p $API_SOURCES/wazuh-api-tmp"
+        exec_cmd "mkdir -p $API_SOURCES/cyb3rhq-api-tmp"
 
-        exec_cmd "curl -sL $DOWNLOAD_PATH | tar xvz -C $API_SOURCES/wazuh-api-tmp"
+        exec_cmd "curl -sL $DOWNLOAD_PATH | tar xvz -C $API_SOURCES/cyb3rhq-api-tmp"
 
-        API_SOURCES="$API_SOURCES/wazuh-api-tmp/wazuh-api-*.*"
+        API_SOURCES="$API_SOURCES/cyb3rhq-api-tmp/cyb3rhq-api-*.*"
 
         API_NEW_VERSION=`cat $API_SOURCES/package.json | grep "version\":" | grep -P "\d+(?:\.\d+){0,2}\-*\w*" -o`
-        print "\nInstalling Wazuh API $API_NEW_VERSION"
+        print "\nInstalling Cyb3rhq API $API_NEW_VERSION"
     else
         API_NEW_VERSION=`cat $API_SOURCES/package.json | grep "version\":" | grep -P "\d+(?:\.\d+){0,2}\-*\w*" -o`
         if [ "X${arg}" == "Xdev" ]; then
-            print "\nInstalling Wazuh API $API_NEW_VERSION from current directory [DEV MODE]."
+            print "\nInstalling Cyb3rhq API $API_NEW_VERSION from current directory [DEV MODE]."
         else
-            print "\nInstalling Wazuh API $API_NEW_VERSION from current directory."
+            print "\nInstalling Cyb3rhq API $API_NEW_VERSION from current directory."
         fi
     fi
 
@@ -316,7 +316,7 @@ setup_api_permissions () {
 
     # Remove execution permissions
     exec_cmd "chmod ugo-x $API_PATH/package.json"
-    exec_cmd "chmod ugo-x $API_PATH/scripts/wazuh-api*"
+    exec_cmd "chmod ugo-x $API_PATH/scripts/cyb3rhq-api*"
 
     # config.js
     exec_cmd "chown root:ossec $API_PATH/configuration"
@@ -341,7 +341,7 @@ setup_api() {
             esac
         else
             while true; do
-                read -p "Wazuh API is already installed (version $API_OLD_VERSION). Do you want to update it? [y/n]: " yn
+                read -p "Cyb3rhq API is already installed (version $API_OLD_VERSION). Do you want to update it? [y/n]: " yn
                 case $yn in
                     [Yy] ) update="yes"; break;;
                     [Nn] ) update="no"; break;;
@@ -383,7 +383,7 @@ setup_api() {
         exec_cmd "cp --parents -r app.js configuration controllers examples helpers models package.json scripts $API_PATH"
         exec_cmd "cd -"
 
-        # Set up the right permissions for Wazuh API
+        # Set up the right permissions for Cyb3rhq API
         setup_api_permissions
 
         if [ -f "$API_PATH/configuration/ssl/.gitignore" ]; then
@@ -456,7 +456,7 @@ setup_api() {
 
 configure_https() {
     HTTPS="Y"
-    PASSWORD="wazuh"
+    PASSWORD="cyb3rhq"
     COUNTRY="XX"
     STATE="XX"
     LOCALITY="XX"
@@ -468,7 +468,7 @@ configure_https() {
 }
 
 main() {
-    print "### Wazuh API ###"
+    print "### Cyb3rhq API ###"
 
     # Reading pre-defined file
     if [ ! `isFile ${PREDEF_FILE}` = "${FALSE}" ]; then

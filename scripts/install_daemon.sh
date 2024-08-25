@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Copyright (C) 2015-2018 Wazuh, Inc. All rights reserved.
-# Wazuh.com
+# Copyright (C) 2015-2018 Cyb3rhq, Inc. All rights reserved.
+# Cyb3rhq.com
 # This program is a free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public
 # License (version 2) as published by the FSF - Free Software
 # Foundation.
 
-# Installer for Wazuh API daemon
-# Wazuh Inc.
+# Installer for Cyb3rhq API daemon
+# Cyb3rhq Inc.
 
 
 I_OWNER="root"
@@ -44,7 +44,7 @@ APP_PATH="${DIRECTORY}/api/app.js"
 SCRIPTS_PATH="${DIRECTORY}/api/scripts"
 
 if ! [ -f $APP_PATH ]; then
-    echo "Can't find $APP_PATH. Is Wazuh API installed?"
+    echo "Can't find $APP_PATH. Is Cyb3rhq API installed?"
     exit 1
 fi
 
@@ -66,12 +66,12 @@ fi
 if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1; then
     echo "Installing for systemd"
 
-    sed "s:^ExecStart=.*:ExecStart=$BIN_DIR $APP_PATH:g" $SCRIPTS_PATH/wazuh-api.service > $SCRIPTS_PATH/wazuh-api.service.tmp
-    install -m $I_FMODE -o $I_OWNER -g $I_GROUP $SCRIPTS_PATH/wazuh-api.service.tmp $I_SYSTEMD/wazuh-api.service
-    rm $SCRIPTS_PATH/wazuh-api.service.tmp
+    sed "s:^ExecStart=.*:ExecStart=$BIN_DIR $APP_PATH:g" $SCRIPTS_PATH/cyb3rhq-api.service > $SCRIPTS_PATH/cyb3rhq-api.service.tmp
+    install -m $I_FMODE -o $I_OWNER -g $I_GROUP $SCRIPTS_PATH/cyb3rhq-api.service.tmp $I_SYSTEMD/cyb3rhq-api.service
+    rm $SCRIPTS_PATH/cyb3rhq-api.service.tmp
     systemctl daemon-reload
-    systemctl enable wazuh-api
-    systemctl restart wazuh-api
+    systemctl enable cyb3rhq-api
+    systemctl restart cyb3rhq-api
 
 
 # Install for SysVinit / Upstart
@@ -79,27 +79,27 @@ if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1; then
 elif command -v service > /dev/null 2>&1; then
     echo "Installing for SysVinit"
 
-    sed "s:^BIN_DIR=.*:BIN_DIR=\"$BIN_DIR\":g" $SCRIPTS_PATH/wazuh-api > $SCRIPTS_PATH/wazuh-api.tmp
-    sed -i "s:^APP_PATH=.*:APP_PATH=\"$APP_PATH\":g" $SCRIPTS_PATH/wazuh-api.tmp
-    sed -i "s:^OSSEC_PATH=.*:OSSEC_PATH=\"${DIRECTORY}\":g" $SCRIPTS_PATH/wazuh-api.tmp
-    install -m $I_XMODE -o $I_OWNER -g $I_GROUP $SCRIPTS_PATH/wazuh-api.tmp $I_SYSVINIT/wazuh-api
-    rm $SCRIPTS_PATH/wazuh-api.tmp
+    sed "s:^BIN_DIR=.*:BIN_DIR=\"$BIN_DIR\":g" $SCRIPTS_PATH/cyb3rhq-api > $SCRIPTS_PATH/cyb3rhq-api.tmp
+    sed -i "s:^APP_PATH=.*:APP_PATH=\"$APP_PATH\":g" $SCRIPTS_PATH/cyb3rhq-api.tmp
+    sed -i "s:^OSSEC_PATH=.*:OSSEC_PATH=\"${DIRECTORY}\":g" $SCRIPTS_PATH/cyb3rhq-api.tmp
+    install -m $I_XMODE -o $I_OWNER -g $I_GROUP $SCRIPTS_PATH/cyb3rhq-api.tmp $I_SYSVINIT/cyb3rhq-api
+    rm $SCRIPTS_PATH/cyb3rhq-api.tmp
 
     enabled=true
     if command -v chkconfig > /dev/null 2>&1; then
-        /sbin/chkconfig --add wazuh-api > /dev/null 2>&1
+        /sbin/chkconfig --add cyb3rhq-api > /dev/null 2>&1
     elif [ -f "/usr/sbin/update-rc.d" ] || [ -n "$(ps -e | egrep upstart)" ]; then
-        update-rc.d wazuh-api defaults
+        update-rc.d cyb3rhq-api defaults
     elif [ -r "/etc/gentoo-release" ]; then
-        rc-update add wazuh-api default
+        rc-update add cyb3rhq-api default
     else
-        echo "init script installed in $I_SYSVINIT/wazuh-api"
+        echo "init script installed in $I_SYSVINIT/cyb3rhq-api"
         echo "We could not enable it. Please enable the service manually."
         enabled=false
     fi
 
     if [ "$enabled" = true ]; then
-        service wazuh-api restart
+        service cyb3rhq-api restart
     fi
 else
     echo "Warning: Unknown init system. Please run the API with:"

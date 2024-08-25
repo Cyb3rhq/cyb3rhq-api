@@ -1,7 +1,7 @@
 /**
  * API RESTful for OSSEC
- * Copyright (C) 2015-2016 Wazuh, Inc.All rights reserved.
- * Wazuh.com
+ * Copyright (C) 2015-2016 Cyb3rhq, Inc.All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -149,7 +149,7 @@ describe('Decoders', function() {
 
         it('Filters: query 1', function(done) {
             request(common.url)
-            .get("/decoders?q=name=wazuh;position=0")
+            .get("/decoders?q=name=cyb3rhq;position=0")
             .auth(common.credentials.user, common.credentials.password)
             .expect("Content-type",/json/)
             .expect(200)
@@ -162,7 +162,7 @@ describe('Decoders', function() {
                 res.body.data.totalItems.should.equal(1);
                 res.body.data.items.should.be.instanceof(Array)
                 res.body.data.items[0].should.have.properties(['position', 'details', 'path', 'file', 'name', 'status']);
-                res.body.data.items[0].name.should.equal('wazuh');
+                res.body.data.items[0].name.should.equal('cyb3rhq');
                 res.body.data.items[0].position.should.equal(0);
 
                 done();

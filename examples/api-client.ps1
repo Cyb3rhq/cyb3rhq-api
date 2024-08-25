@@ -1,7 +1,7 @@
 ###
 #  API RESTful for OSSEC
-#  Copyright (C) 2015-2016 Wazuh, Inc.All rights reserved.
-#  Wazuh.com
+#  Copyright (C) 2015-2016 Cyb3rhq, Inc.All rights reserved.
+#  Cyb3rhq.com
 #
 #  This program is a free software; you can redistribute it
 #  and/or modify it under the terms of the GNU General Public
@@ -9,8 +9,8 @@
 #  Foundation.
 ###
 
-# How to use OSSEC Wazuh RESTful API from PowerShell 3.0+
-# Documentation: https://documentation.wazuh.com/current/user-manual/api/index.html
+# How to use OSSEC Cyb3rhq RESTful API from PowerShell 3.0+
+# Documentation: https://documentation.cyb3rhq.com/current/user-manual/api/index.html
 
 function Ignore-SelfSignedCerts {
     add-type @"
@@ -60,4 +60,4 @@ Write-Output "`r`n`r`nManager:"
 $response = req -method "get" -resource "/manager/status"
 Write-Output $response
 
-Write-Output "`r`n`r`nWazuh.com"
+Write-Output "`r`n`r`nCyb3rhq.com"

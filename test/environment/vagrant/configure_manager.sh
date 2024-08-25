@@ -3,14 +3,14 @@
 master_ip=$1
 manager_type=$2
 node_name=$3
-wazuh_api_folder=$4
+cyb3rhq_api_folder=$4
 
 apt-get update
-curl -s https://s3-us-west-1.amazonaws.com/packages-dev.wazuh.com/key/GPG-KEY-WAZUH | apt-key add -
-echo "deb https://s3-us-west-1.amazonaws.com/packages-dev.wazuh.com/pre-release/apt/ unstable main" | tee -a /etc/apt/sources.list.d/wazuh_pre_release.list
+curl -s https://s3-us-west-1.amazonaws.com/packages-dev.cyb3rhq.com/key/GPG-KEY-CYB3RHQ | apt-key add -
+echo "deb https://s3-us-west-1.amazonaws.com/packages-dev.cyb3rhq.com/pre-release/apt/ unstable main" | tee -a /etc/apt/sources.list.d/cyb3rhq_pre_release.list
 
 apt-get update
-apt-get install wazuh-manager -y
+apt-get install cyb3rhq-manager -y
 apt-get install python python-cryptography -y
 
 curl -sL https://deb.nodesource.com/setup_8.x | bash -
@@ -18,8 +18,8 @@ apt-get install nodejs gcc -y
 npm install mocha -g
 npm install glob supertest mocha should moment
 npm config set user 0
-cd ${wazuh_api_folder}
-${wazuh_api_folder}/install_api.sh
+cd ${cyb3rhq_api_folder}
+${cyb3rhq_api_folder}/install_api.sh
 API_CONF_FOLDER=/var/ossec/api/configuration
 PRECONF_FILE=${API_CONF_FOLDER}/preloaded_vars.conf
 cat <<EOT >> ${PRECONF_FILE}
@@ -42,7 +42,7 @@ EOT
 sed -i "s:config.experimental_features  = false;:config.experimental_features = true;:g" /var/ossec/api/configuration/config.js
 sed -i "s:config.cache_enabled = \"yes\";:config.cache_enabled = \"no\";:g" /var/ossec/api/configuration/config.js
 
-systemctl restart wazuh-api
+systemctl restart cyb3rhq-api
 
 /var/ossec/bin/ossec-control enable agentless
 /var/ossec/bin/ossec-control enable client-syslog
@@ -51,7 +51,7 @@ systemctl restart wazuh-api
 if [ "X${manager_type}" = "Xmaster" ]
 then
     cat << EOT >> /var/ossec/etc/local_internal_options.conf
-    wazuh_database.sync_syscheck=1
+    cyb3rhq_database.sync_syscheck=1
 EOT
 
     cp /vagrant/ossec_master.conf /var/ossec/etc/ossec.conf
@@ -63,7 +63,7 @@ sed -i "s:<key></key>:<key>9d273b53510fef702b54a92e9cffc82e</key>:g" /var/ossec/
 sed -i "s:<node>NODE_IP</node>:<node>$master_ip</node>:g" /var/ossec/etc/ossec.conf
 sed -i -e "/<cluster>/,/<\/cluster>/ s|<disabled>[a-z]\+</disabled>|<disabled>no</disabled>|g" /var/ossec/etc/ossec.conf
 sed -i "s:<node_name>node01</node_name>:<node_name>$node_name</node_name>:g" /var/ossec/etc/ossec.conf
-systemctl restart wazuh-manager
+systemctl restart cyb3rhq-manager
 
 if [ "X${manager_type}" = "Xmaster" ]
 then

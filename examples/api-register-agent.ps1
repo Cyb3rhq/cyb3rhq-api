@@ -1,8 +1,8 @@
 
 ###
 #  Powershell script for registering agents automatically with the API
-#  Copyright (C) 2017 Wazuh, Inc. All rights reserved.
-#  Wazuh.com
+#  Copyright (C) 2017 Cyb3rhq, Inc. All rights reserved.
+#  Cyb3rhq.com
 #
 #  This program is a free software; you can redistribute it
 #  and/or modify it under the terms of the GNU General Public
@@ -40,13 +40,13 @@ function req($method, $resource, $params){
 }
 
 # Configuration
-$base_url = "http://<Wazuh-Manager-IP>:55000"
+$base_url = "http://<Cyb3rhq-Manager-IP>:55000"
 $username = "foo"
 $password = "bar"
 $agent_name = $env:computername
 $path = "C:\Program Files (x86)\ossec-agent\"
 $config = "C:\Program Files (x86)\ossec-agent\ossec.conf"
-$wazuh_manager = "<Wazuh-Manager-IP>"
+$cyb3rhq_manager = "<Cyb3rhq-Manager-IP>"
 Ignore-SelfSignedCerts
 
 # Test API integration to make sure IE has run through initial startup dialogue - This can be a problem with new servers.
@@ -54,7 +54,7 @@ Ignore-SelfSignedCerts
 try{
     $testresponse = req -method "GET" -resource "/manager/info?pretty" | ConvertFrom-Json | select -expand data -ErrorAction Stop -ErrorVariable geterr
 
-    Write-Output "The Wazuh manager is contactable via the API, the response is: `n $($testresponse)"
+    Write-Output "The Cyb3rhq manager is contactable via the API, the response is: `n $($testresponse)"
     }catch{
     Write-Host -ForegroundColor Red "IE has not had it's initial startup dialogue dismissed, please complete this step and try again. Script will exit. Error: $($geterr)`n .Please Run OSSEC_AgentConfig Separately once you correct the error."
     Exit
@@ -111,7 +111,7 @@ Write-Output "$($srvName) is now $($srvStat.status)"
 
 Start-Sleep -s 10
 
-Add-Content $config "`n<ossec_config>   <client>    <server>  <address>$($wazuh_manager)</address> </server>   </client> </ossec_config>"
+Add-Content $config "`n<ossec_config>   <client>    <server>  <address>$($cyb3rhq_manager)</address> </server>   </client> </ossec_config>"
 
 Start-Sleep -s 10
 
@@ -141,7 +141,7 @@ Write-Output "$($srvName) is now $($srvStat.status)"
 
 Start-Sleep -s 10
 
-Add-Content $config "`n<ossec_config>   <client>    <server>  <address>$($wazuh_manager)</address> </server>   </client> </ossec_config>"
+Add-Content $config "`n<ossec_config>   <client>    <server>  <address>$($cyb3rhq_manager)</address> </server>   </client> </ossec_config>"
 
 Start-Sleep -s 10
 

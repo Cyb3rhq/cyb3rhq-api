@@ -1,7 +1,7 @@
 /**
- * Wazuh RESTful API
- * Copyright (C) 2015-2020 Wazuh, Inc. All rights reserved.
- * Wazuh.com
+ * Cyb3rhq RESTful API
+ * Copyright (C) 2015-2020 Cyb3rhq, Inc. All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -107,7 +107,7 @@ exports.send_file = function(req, res, file_name, type){
         var data_request = {'function': '/' + type +'/files', 'arguments': {'file': file_name}};
 
         var send_aux = this.send;
-        execute.exec(python_bin, [wazuh_control], data_request, function (data) {
+        execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) {
             try {
                 try {
                     var filepath = data.data.items[0].path + "/" + file_name;

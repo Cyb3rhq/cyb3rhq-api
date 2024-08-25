@@ -17,7 +17,7 @@ if [ "X$3" != "Xmaster" ]; then
 fi
 
 # enable syscheck DB
-echo 'wazuh_database.sync_syscheck=1' >> /var/ossec/etc/local_internal_options.conf
+echo 'cyb3rhq_database.sync_syscheck=1' >> /var/ossec/etc/local_internal_options.conf
 
 # configure API for development
 sed -i 's/config.logs = "info";/config.logs = "debug";/g' /var/ossec/api/configuration/config.js
@@ -40,13 +40,13 @@ PROXY=N
 EOT
 /var/ossec/api/scripts/configure_api.sh
 
-# fix for generating Wazuh documentation
+# fix for generating Cyb3rhq documentation
 sed -i '26 s/self.errors/'\''ignore'\''/g' /usr/lib/python3.6/encodings/ascii.py
 
-# start Wazuh
+# start Cyb3rhq
 /var/ossec/bin/ossec-control start
 
-# start Wazuh API
+# start Cyb3rhq API
 node /var/ossec/api/app.js &
 
 # start SSH server

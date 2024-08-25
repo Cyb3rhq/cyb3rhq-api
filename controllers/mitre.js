@@ -1,7 +1,7 @@
 /**
- * Wazuh RESTful API
- * Copyright (C) 2015-2019 Wazuh, Inc. All rights reserved.
- * Wazuh.com
+ * Cyb3rhq RESTful API
+ * Copyright (C) 2015-2019 Cyb3rhq, Inc. All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -65,7 +65,7 @@ router.get('/', cache(), function(req, res) {
     if ('q' in req.query)
         data_request['arguments']['q'] = req.query.q;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 module.exports = router;

@@ -12,7 +12,7 @@
 
  * Cluster configurated and running with 2 connected nodes: `master` and `worker`.
  * Three connected agents (excluding manager):
-    * id `000` and version _Wazuh v3.8.0_. Must have the following additional configuration:
+    * id `000` and version _Cyb3rhq v3.8.0_. Must have the following additional configuration:
     	* Enable experimental features in `/var/ossec/api/configuration/config.js`:
 	    ```
 	    config.experimental_features = true;
@@ -79,14 +79,14 @@
             </socket>
             ```
         * Mail:
-            1. Follow steps detailed [here](https://documentation.wazuh.com/current/user-manual/manager/manual-email-report/smtp_authentication.html).
+            1. Follow steps detailed [here](https://documentation.cyb3rhq.com/current/user-manual/manager/manual-email-report/smtp_authentication.html).
             2.
             ```xml
             <global>
                 <email_notification>yes</email_notification>
-                <email_to>hello@wazuh.com</email_to>
+                <email_to>hello@cyb3rhq.com</email_to>
                 <smtp_server>localhost</smtp_server>
-                <email_from>wazuh@test.com</email_from>
+                <email_from>cyb3rhq@test.com</email_from>
             </global>
             <email_alerts>
                 <email_to>you@example.com</email_to>
@@ -97,8 +97,8 @@
 
 
 
-    * id `001` and version _Wazuh v3.8.0_.
-    * id `002` and version _Wazuh v3.8.0_. Must have the following additional configuration:
+    * id `001` and version _Cyb3rhq v3.8.0_.
+    * id `002` and version _Cyb3rhq v3.8.0_. Must have the following additional configuration:
         * Labels:
             ```xml
             <labels>
@@ -109,10 +109,10 @@
                 <label key="installation" hidden="yes">January 1st, 2017</label>
             </labels>
             ```
-    * id `003` and version _Wazuh v3.5.0-1_.
+    * id `003` and version _Cyb3rhq v3.5.0-1_.
 
- * DB syscheck activated: Add `wazuh_database.sync_syscheck=1` to the file `/var/ossec/etc/local_internal_options.conf`.
- * Restart wazuh-manager.
+ * DB syscheck activated: Add `cyb3rhq_database.sync_syscheck=1` to the file `/var/ossec/etc/local_internal_options.conf`.
+ * Restart cyb3rhq-manager.
  * Then start needed services:
     1. Run `maild` service:
     ```shellsession
@@ -126,12 +126,12 @@
 ## Prepare environment
 Every step detailed above can be automated by executing the following command from `./environment/vagrant` folder:
 ```shellsession
-#  export WAZUH_API_PATH=/your/wazuh/api/path
+#  export CYB3RHQ_API_PATH=/your/cyb3rhq/api/path
 #  vagrant up
 ```
 
 ## Run all tests
 ```shellsession
-#  cd /home/vagrant/wazuh_api
+#  cd /home/vagrant/cyb3rhq_api
 #  mocha ./test --timeout 10000
 ```

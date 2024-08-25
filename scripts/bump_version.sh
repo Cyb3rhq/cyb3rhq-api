@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Bump source version
-# Wazuh Inc.
+# Cyb3rhq Inc.
 
 # Syntax:
 # bump_version [ <version> ] [ <revision> ]

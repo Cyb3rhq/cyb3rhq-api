@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Copyright (C) 2015-2020 Wazuh, Inc. All rights reserved.
-# Wazuh.com
+# Copyright (C) 2015-2020 Cyb3rhq, Inc. All rights reserved.
+# Cyb3rhq.com
 # This program is a free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public
 # License (version 2) as published by the FSF - Free Software
@@ -273,7 +273,7 @@ main () {
 
     previous_checks
 
-    print "### Wazuh API Configuration ###"
+    print "### Cyb3rhq API Configuration ###"
 
     change_port
     change_https
@@ -284,9 +284,9 @@ main () {
 
     print "\nRestarting API."
     if [ $serv_type == "systemctl" ]; then
-        exec_cmd "systemctl restart wazuh-api"
+        exec_cmd "systemctl restart cyb3rhq-api"
     else
-        exec_cmd "service wazuh-api restart"
+        exec_cmd "service cyb3rhq-api restart"
     fi
 
     print "\n### [Configuration changed] ###"

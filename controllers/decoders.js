@@ -1,7 +1,7 @@
 /**
- * Wazuh RESTful API
- * Copyright (C) 2015-2020 Wazuh, Inc. All rights reserved.
- * Wazuh.com
+ * Cyb3rhq RESTful API
+ * Copyright (C) 2015-2020 Cyb3rhq, Inc. All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -24,7 +24,7 @@ var router = require('express').Router();
  * @apiParam {String} [file] Filters by filename.
  * @apiParam {String} [path] Filters by path.
  * @apiParam {String="enabled","disabled", "all"} [status] Filters the decoders by status.
- * @apiParam {String} [q] Query to filter results by. For example q=name=wazuh
+ * @apiParam {String} [q] Query to filter results by. For example q=name=cyb3rhq
  *
  * @apiDescription Returns all decoders included in ossec.conf.
  *
@@ -88,7 +88,7 @@ router.get('/files', cache(), function(req, res) {
     if ('download' in req.query)
         res_h.send_file(req, res, req.query.download, 'decoders');
     else
-        execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+        execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -129,7 +129,7 @@ router.get('/parents', cache(), function(req, res) {
 
     data_request['arguments']['filters'] = {'parents': 'True'};
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -174,7 +174,7 @@ router.get('/:decoder_name', cache(), function(req, res) {
 
     data_request['arguments']['filters'] = {'name': req.params.decoder_name};
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 

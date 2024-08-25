@@ -1,40 +1,40 @@
 #!/bin/sh
-# WAZUH API Service
-# Copyright (C) 2015-2018 Wazuh, Inc. All rights reserved.
-# Wazuh.com
+# CYB3RHQ API Service
+# Copyright (C) 2015-2018 Cyb3rhq, Inc. All rights reserved.
+# Cyb3rhq.com
 # This program is a free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public
 # License (version 2) as published by the FSF - Free Software
 # Foundation.
 
 ### BEGIN INIT INFO
-# Provides:          wazuh_api
+# Provides:          cyb3rhq_api
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Should-Start:      $network
 # Should-Stop:       $network
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Wazuh API
-# Description:       Wazuh API daemon
+# Short-Description: Cyb3rhq API
+# Description:       Cyb3rhq API daemon
 #
 ### END INIT INFO
 
 # Instructions:
-#  sudo install -m 755 -o root -g root /var/ossec/api/scripts/wazuh-api /etc/init.d/
-#  sudo systemctl enable wazuh-api
+#  sudo install -m 755 -o root -g root /var/ossec/api/scripts/cyb3rhq-api /etc/init.d/
+#  sudo systemctl enable cyb3rhq-api
 #  sudo systemctl daemon-reload
-#  sudo systemctl restart wazuh-api
+#  sudo systemctl restart cyb3rhq-api
 
 BIN_DIR=
 APP_PATH=
 OSSEC_PATH=
-PID_PATH="$OSSEC_PATH/var/run/wazuh-api.pid"
+PID_PATH="$OSSEC_PATH/var/run/cyb3rhq-api.pid"
 API_LOGS="$OSSEC_PATH/logs/api.log"
 
 start() {
   if [ -f $PID_PATH ] && [ -n "$(ps --no-headers -p `cat $PID_PATH`)" ]; then
-    echo "WAZUH-API is already running."
+    echo "CYB3RHQ-API is already running."
   else
     $BIN_DIR $APP_PATH > /dev/null 2>&1 < /dev/null &
 
@@ -45,7 +45,7 @@ start() {
       exit 1
     fi
 
-    echo "WAZUH-API started."
+    echo "CYB3RHQ-API started."
   fi
 }
 
@@ -54,17 +54,17 @@ stop() {
     kill `cat $PID_PATH` >  /dev/null 2>&1
     while [ -n "$(ps --no-headers -p `cat $PID_PATH`)" ]; do sleep 0.1; done
     rm -f $PID_PATH
-    echo "WAZUH-API stopped."
+    echo "CYB3RHQ-API stopped."
   else
-    echo "WAZUH-API is not running."
+    echo "CYB3RHQ-API is not running."
   fi
 }
 
 status() {
   if [ -f $PID_PATH ] && [ -n "$(ps --no-headers -p `cat $PID_PATH`)" ]; then
-    echo "WAZUH-API is running."
+    echo "CYB3RHQ-API is running."
   else
-    echo "WAZUH-API is stopped."
+    echo "CYB3RHQ-API is stopped."
     if [ -f $API_LOGS ]; then
       echo ""
       echo "Last 20 log entries:"

@@ -1,7 +1,7 @@
 /**
- * Wazuh RESTful API
- * Copyright (C) 2015-2020 Wazuh, Inc. All rights reserved.
- * Wazuh.com
+ * Cyb3rhq RESTful API
+ * Copyright (C) 2015-2020 Cyb3rhq, Inc. All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -31,7 +31,7 @@ router.get('/status', cache(), function(req, res) {
     req.apicacheGroup = "manager";
 
     var data_request = {'function': '/manager/status', 'arguments': {}};
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -51,7 +51,7 @@ router.get('/info', cache(), function(req, res) {
     req.apicacheGroup = "manager";
 
     var data_request = {'function': '/manager/info', 'arguments': {}};
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -59,7 +59,7 @@ router.get('/info', cache(), function(req, res) {
  * @apiName GetManagerActiveConfiguration
  * @apiGroup Configuration
  *
- * @apiParam {String="agent","agentless","analysis","auth","com","csyslog","integrator","logcollector","mail","monitor","request","syscheck","wmodules"} [component] Indicates the wazuh component to check.
+ * @apiParam {String="agent","agentless","analysis","auth","com","csyslog","integrator","logcollector","mail","monitor","request","syscheck","wmodules"} [component] Indicates the cyb3rhq component to check.
  * @apiParam {String="client","buffer","labels","internal","agentless","global","active_response","alerts","command","rules","decoders","internal","auth","active-response","internal","cluster","csyslog","integration","localfile","socket","remote","syscheck","rootcheck","wmodules"} [configuration] Indicates a configuration to check in the component.
  *
  * @apiDescription Returns the requested configuration in JSON format.
@@ -82,7 +82,7 @@ router.get('/config/:component/:configuration', cache(), function(req, res) {
     data_request['arguments']['component'] = req.params.component;
     data_request['arguments']['config'] = req.params.configuration;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -118,7 +118,7 @@ router.get('/configuration', cache(), function(req, res) {
         else
             res_h.bad_request(req, res, 604, "Missing field: 'section'");
     }
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -128,7 +128,7 @@ router.get('/configuration', cache(), function(req, res) {
  *
  * @apiParam {String} [date] Selects the date for getting the statistical information. Format: YYYYMMDD
  *
- * @apiDescription Returns Wazuh statistical information for the current or specified date.
+ * @apiDescription Returns Cyb3rhq statistical information for the current or specified date.
  *
  * @apiExample {curl} Example usage*:
  *     curl -u foo:bar -k -X GET "https://127.0.0.1:55000/manager/stats?pretty"
@@ -158,7 +158,7 @@ router.get('/stats', cache(), function(req, res) {
         data_request['arguments']['day'] = date.substring(6, 8);
     }
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -167,7 +167,7 @@ router.get('/stats', cache(), function(req, res) {
  * @apiGroup Stats
  *
  *
- * @apiDescription Returns Wazuh statistical information per hour. Each number in the averages field represents the average of alerts per hour.
+ * @apiDescription Returns Cyb3rhq statistical information per hour. Each number in the averages field represents the average of alerts per hour.
  *
  * @apiExample {curl} Example usage*:
  *     curl -u foo:bar -k -X GET "https://127.0.0.1:55000/manager/stats/hourly?pretty"
@@ -179,7 +179,7 @@ router.get('/stats/hourly', cache(), function(req, res) {
     req.apicacheGroup = "manager";
 
     var data_request = {'function': '/manager/stats/hourly', 'arguments': {}};
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -188,7 +188,7 @@ router.get('/stats/hourly', cache(), function(req, res) {
  * @apiGroup Stats
  *
  *
- * @apiDescription Returns Wazuh statistical information per week. Each number in the hours field represents the average alerts per hour for that specific day.
+ * @apiDescription Returns Cyb3rhq statistical information per week. Each number in the hours field represents the average alerts per hour for that specific day.
  *
  * @apiExample {curl} Example usage*:
  *     curl -u foo:bar -k -X GET "https://127.0.0.1:55000/manager/stats/weekly?pretty"
@@ -200,7 +200,7 @@ router.get('/stats/weekly', cache(), function(req, res) {
     req.apicacheGroup = "manager";
 
     var data_request = {'function': '/manager/stats/weekly', 'arguments': {}};
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -247,7 +247,7 @@ router.get('/logs/summary', cache(), function(req, res) {
     req.apicacheGroup = "manager";
 
     var data_request = {'function': '/manager/logs/summary', 'arguments': {}};
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -268,7 +268,7 @@ router.get('/stats/analysisd', cache(), function(req, res) {
     req.apicacheGroup = "manager";
 
     var data_request = {'function': '/manager/stats/analysisd', 'arguments': {}};
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -288,7 +288,7 @@ router.get('/stats/remoted', cache(), function(req, res) {
     req.apicacheGroup = "manager";
 
     var data_request = {'function': '/manager/stats/remoted', 'arguments': {}};
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -327,7 +327,7 @@ router.get('/files', cache(), function(req, res) {
     if ('validation' in req.query)
         data_request['arguments']['validation'] = req.query.validation == 'true' ? true : false;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -362,7 +362,7 @@ router.delete('/files', cache(), function(req, res) {
 
     data_request['arguments']['path'] = req.query.path;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -421,15 +421,15 @@ router.post('/files', function(req, res) {
     if ('overwrite' in req.query)
         data_request['arguments']['overwrite'] = req.query.overwrite == 'true' ? true : false;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
- * @api {put} /manager/restart Restart Wazuh manager
+ * @api {put} /manager/restart Restart Cyb3rhq manager
  * @apiName PutRestartManager
  * @apiGroup Restart
  *
- * @apiDescription Restarts Wazuh Manager.
+ * @apiDescription Restarts Cyb3rhq Manager.
  *
  * @apiExample {curl} Example usage*:
  *     curl -u foo:bar -k -X PUT "https://127.0.0.1:55000/manager/restart?pretty"
@@ -439,15 +439,15 @@ router.put('/restart', cache(), function(req, res) {
     logger.debug(req.connection.remoteAddress + " PUT /manager/restart");
 
     var data_request = {'function': 'PUT/manager/restart', 'arguments': {}};
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
- * @api {get} /manager/configuration/validation Check Wazuh configuration
+ * @api {get} /manager/configuration/validation Check Cyb3rhq configuration
  * @apiName GetManagerConfiguration
  * @apiGroup Files
  *
- * @apiDescription Returns if Wazuh configuration is OK.
+ * @apiDescription Returns if Cyb3rhq configuration is OK.
  *
  * @apiExample {curl} Example usage:
  *     curl -u foo:bar -k -X GET "https://127.0.0.1:55000/manager/configuration/validation?pretty"
@@ -458,7 +458,7 @@ router.get('/configuration/validation', cache(), function(req, res) {
 
     var data_request = {'function': '/manager/configuration/validation', 'arguments': {}};
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 module.exports = router;

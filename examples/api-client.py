@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 ###
 #  API RESTful for OSSEC
-#  Copyright (C) 2015-2016 Wazuh, Inc.All rights reserved.
-#  Wazuh.com
+#  Copyright (C) 2015-2016 Cyb3rhq, Inc.All rights reserved.
+#  Cyb3rhq.com
 #
 #  This program is a free software; you can redistribute it
 #  and/or modify it under the terms of the GNU General Public
@@ -10,9 +10,9 @@
 #  Foundation.
 ###
 
-# How to use OSSEC Wazuh RESTful API from Python
+# How to use OSSEC Cyb3rhq RESTful API from Python
 # Requests module: http://docs.python-requests.org/
-# Documentation: https://documentation.wazuh.com/current/user-manual/api/index.html
+# Documentation: https://documentation.cyb3rhq.com/current/user-manual/api/index.html
 
 import json
 import sys
@@ -73,4 +73,4 @@ if __name__ == "__main__":
     print(json.dumps(response, indent=4, sort_keys=True))
     print("Status: {0} - {1}".format(status_code, code_desc(status_code)))
 
-    print("\n\nWazuh.com")
+    print("\n\nCyb3rhq.com")

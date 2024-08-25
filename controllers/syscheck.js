@@ -1,7 +1,7 @@
 /**
- * Wazuh RESTful API
- * Copyright (C) 2015-2020 Wazuh, Inc. All rights reserved.
- * Wazuh.com
+ * Cyb3rhq RESTful API
+ * Copyright (C) 2015-2020 Cyb3rhq, Inc. All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -72,7 +72,7 @@ router.get('/:agent_id/last_scan', cache(), function(req, res) {
         return;
     data_request['arguments']['agent_id'] = req.params.agent_id;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 
@@ -82,7 +82,7 @@ router.get('/:agent_id/last_scan', cache(), function(req, res) {
  * @apiGroup Run
  *
  *
- * @apiDescription Runs syscheck and rootcheck on all agents (Wazuh launches both processes simultaneously).
+ * @apiDescription Runs syscheck and rootcheck on all agents (Cyb3rhq launches both processes simultaneously).
  *
  * @apiExample {curl} Example usage*:
  *     curl -u foo:bar -k -X PUT "https://127.0.0.1:55000/syscheck?pretty"
@@ -93,7 +93,7 @@ router.put('/', function(req, res) {
 
     var data_request = {'function': 'PUT/syscheck', 'arguments': {}};
     data_request['arguments']['all_agents'] = 1;
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -103,7 +103,7 @@ router.put('/', function(req, res) {
  *
  * @apiParam {Number} agent_id Agent ID.
  *
- * @apiDescription Runs syscheck and rootcheck on an agent (Wazuh launches both processes simultaneously).
+ * @apiDescription Runs syscheck and rootcheck on an agent (Cyb3rhq launches both processes simultaneously).
  *
  * @apiExample {curl} Example usage:
  *     curl -u foo:bar -k -X PUT "https://127.0.0.1:55000/syscheck/000?pretty"
@@ -118,7 +118,7 @@ router.put('/:agent_id', function(req, res) {
         return;
     data_request['arguments']['agent_id'] = req.params.agent_id;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -145,7 +145,7 @@ router.delete('/:agent_id', function(req, res) {
         return;
     data_request['arguments']['agent_id'] = req.params.agent_id;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 

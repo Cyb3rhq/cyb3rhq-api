@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Created by Wazuh, Inc. <info@wazuh.com>.
+# Created by Cyb3rhq, Inc. <info@cyb3rhq.com>.
 # This program is a free software; you can redistribute it and/or modify it under the terms of GPLv2
 
 from sys import argv, exit
@@ -11,25 +11,25 @@ import logging
 import time
 import asyncio
 
-error_wazuh_package = 0
+error_cyb3rhq_package = 0
 exception_error = None
 try:
-    from wazuh import Wazuh
-    from wazuh.exception import WazuhException
-    from wazuh.cluster.dapi import dapi
+    from cyb3rhq import Cyb3rhq
+    from cyb3rhq.exception import Cyb3rhqException
+    from cyb3rhq.cluster.dapi import dapi
 except (ImportError, SyntaxError) as e:
     error = str(e)
-    error_wazuh_package = -1
-except WazuhException as e:
-    error_wazuh_package = -3
+    error_cyb3rhq_package = -1
+except Cyb3rhqException as e:
+    error_cyb3rhq_package = -3
     error = e.message
     error_code = e.code
 except Exception as e:
     error = str(e)
     if str(e).startswith("Error 4000"):
-        error_wazuh_package=-1
+        error_cyb3rhq_package=-1
     else:
-        error_wazuh_package = -2
+        error_cyb3rhq_package = -2
         exception_error = e
 
 
@@ -69,7 +69,7 @@ def signal_handler(n_signal, frame):
 
 def usage():
     help_msg = '''
-    Wazuh Control
+    Cyb3rhq Control
 
     \t-p, --pretty       Pretty JSON
     \t-d, --debug        Debug mode
@@ -120,20 +120,20 @@ if __name__ == "__main__":
         stdin = get_stdin("")
         request = is_json(stdin)
         if not request:
-            print_json("Wazuh-Python Internal Error: Bad JSON input", 1000)
+            print_json("Cyb3rhq-Python Internal Error: Bad JSON input", 1000)
             exit(1)
 
-    if error_wazuh_package < 0:
-        if error_wazuh_package == -1:
-            print_json("Wazuh-Python Internal Error: {0}".format(error), 1000)
-        if error_wazuh_package == -2:
-            print_json("Wazuh-Python Internal Error: uncaught exception: {0}".format(exception_error), 1000)
-        if error_wazuh_package == -3:
+    if error_cyb3rhq_package < 0:
+        if error_cyb3rhq_package == -1:
+            print_json("Cyb3rhq-Python Internal Error: {0}".format(error), 1000)
+        if error_cyb3rhq_package == -2:
+            print_json("Cyb3rhq-Python Internal Error: uncaught exception: {0}".format(exception_error), 1000)
+        if error_cyb3rhq_package == -3:
             print_json(error, error_code)
         exit(0)  # error code 0 shows the msg in the API response.
 
     if 'function' not in request:
-        print_json("Wazuh-Python Internal Error: 'JSON input' must have the 'function' key", 1000)
+        print_json("Cyb3rhq-Python Internal Error: 'JSON input' must have the 'function' key", 1000)
         exit(1)
 
     # Main
@@ -153,11 +153,11 @@ if __name__ == "__main__":
 
         print(data)
 
-    except WazuhException as e:
+    except Cyb3rhqException as e:
         print_json(e.message, e.code)
         if debug:
             raise
     except Exception as e:
-        print_json("Wazuh-Python Internal Error: {0}".format(str(e)), 1000)
+        print_json("Cyb3rhq-Python Internal Error: {0}".format(str(e)), 1000)
         if debug:
             raise

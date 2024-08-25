@@ -1,7 +1,7 @@
 /**
- * Wazuh RESTful API
- * Copyright (C) 2015-2020 Wazuh, Inc. All rights reserved.
- * Wazuh.com
+ * Cyb3rhq RESTful API
+ * Copyright (C) 2015-2020 Cyb3rhq, Inc. All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -70,7 +70,7 @@ router.get('/summary', cache(), function(req, res) {
     req.apicacheGroup = "agents";
 
     var data_request = {'function': '/agents/summary', 'arguments': {}};
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -205,7 +205,7 @@ router.get('/groups/:group_id/configuration', cache(), function(req, res) {
     if ('limit' in req.query)
         data_request['arguments']['limit'] = Number(req.query.limit);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -240,7 +240,7 @@ router.post('/groups/:group_id/configuration', function(req, res) {
         return;
     }
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -277,7 +277,7 @@ router.post('/groups/:group_id/files/:file_name', function(req, res) {
     }
     data_request['arguments']['file_name'] = req.params.file_name;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -319,7 +319,7 @@ router.get('/groups/:group_id/files/:filename', cache(), function(req, res) {
     if ('format' in req.query)
         data_request['arguments']['return_format'] = req.query.format;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -367,7 +367,7 @@ router.get('/groups/:group_id/files', cache(), function(req, res) {
 
     data_request['arguments']['group_id'] = req.params.group_id;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -425,7 +425,7 @@ router.get('/name/:agent_name', cache(), function(req, res) {
         data_request['arguments']['select'] =
         filter.select_param_to_json(req.query.select);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 
 })
 
@@ -463,7 +463,7 @@ router.get('/:agent_id', cache(), function(req, res) {
         data_request['arguments']['select'] =
         filter.select_param_to_json(req.query.select);
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 
 })
 
@@ -490,7 +490,7 @@ router.get('/:agent_id/key', function(req, res) {
 
     data_request['arguments']['agent_id'] = req.params.agent_id;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -522,7 +522,7 @@ router.get('/:agent_id/upgrade_result', function(req, res) {
     if ('timeout' in req.query)
         data_request['arguments']['timeout'] = req.query.timeout;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 
@@ -553,7 +553,7 @@ router.get('/:agent_id/upgrade_result', function(req, res) {
     data_request['arguments']['component'] = req.params.component;
     data_request['arguments']['configuration'] = req.params.configuration;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
  /**
@@ -593,7 +593,7 @@ router.put('/restart', function(req, res) {
 
     data_request['arguments']['restart_all'] = 'True';
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -621,7 +621,7 @@ router.post('/restart', function(req, res) {
 
     if ('ids' in req.body){
         data_request['arguments']['agent_id'] = req.body.ids;
-        execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+        execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
     }else
         res_h.bad_request(req, res, 604, "Missing field: 'ids'");
 })
@@ -649,7 +649,7 @@ router.put('/groups/:group_id/restart', function(req, res) {
 
     data_request['arguments']['group_id'] = req.params.group_id;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -675,7 +675,7 @@ router.put('/:agent_id/restart', function(req, res) {
 
     data_request['arguments']['agent_id'] = req.params.agent_id;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -685,7 +685,7 @@ router.put('/:agent_id/restart', function(req, res) {
  *
  * @apiParam {Number} agent_id Agent unique ID.
  * @apiParam {String} [wpk_repo] WPK repository.
- * @apiParam {String} [version] Wazuh version.
+ * @apiParam {String} [version] Cyb3rhq version.
  * @apiParam {Boolean} [use_http] Use protocol HTTP. If it is false use HTTPS. By default the value is set to false.
  * @apiParam {number="0","1"} [force] Force upgrade.
  *
@@ -717,7 +717,7 @@ router.put('/:agent_id/upgrade', function(req, res) {
     if ('use_http' in req.query)
         data_request['arguments']['use_http'] = (req.query.use_http == true || req.query.use_http == 'true');
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -726,7 +726,7 @@ router.put('/:agent_id/upgrade', function(req, res) {
  * @apiGroup Upgrade
  *
  * @apiParam {Number} agent_id Agent unique ID.
- * @apiParam {String} file_path Path to the WPK file. The file must be on a folder on the Wazuh's installation directory (by default, ``/var/ossec``).
+ * @apiParam {String} file_path Path to the WPK file. The file must be on a folder on the Cyb3rhq's installation directory (by default, ``/var/ossec``).
  * @apiParam {String} installer Installation script.
  *
  * @apiDescription Upgrade the agent using a custom file.
@@ -753,7 +753,7 @@ router.put('/:agent_id/upgrade_custom', function(req, res) {
     if ('installer' in req.query)
         data_request['arguments']['installer'] = req.query.installer;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -779,7 +779,7 @@ router.put('/:agent_name', function(req, res) {
 
     data_request['arguments']['name'] = req.params.agent_name;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -806,7 +806,7 @@ router.put('/groups/:group_id', function(req, res) {
 
     data_request['arguments']['group_id'] = req.params.group_id;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -837,7 +837,7 @@ router.put('/:agent_id/group/:group_id', function(req, res) {
     data_request['arguments']['group_id'] = req.params.group_id;
     data_request['arguments']['replace'] = 'force_single_group' in req.query && req.query.replace != 'false' ? true : false;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 
@@ -868,7 +868,7 @@ router.post('/group/:group_id', function(req, res) {
     data_request['arguments']['agent_id_list'] = req.body.ids;
 
     if ('ids' in req.body){
-        execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+        execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
     }else
         res_h.bad_request(req, res, 604, "Missing field: 'ids'");
 })
@@ -901,7 +901,7 @@ router.delete('/groups', function(req, res) {
         } else {
             data_request['arguments']['group_id'] = req.query.ids;
         }
-        execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+        execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
     }else
         res_h.bad_request(req, res, 604, "Missing field: 'ids'");
 })
@@ -932,7 +932,7 @@ router.delete('/:agent_id', function(req, res) {
     data_request['arguments']['agent_id'] = req.params.agent_id;
     data_request['arguments']['purge'] = 'purge' in req.query && req.query.purge != 'false' ? true : false;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -958,7 +958,7 @@ router.delete('/:agent_id/group', function(req, res) {
 
     data_request['arguments']['agent_id'] = req.params.agent_id;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -986,7 +986,7 @@ router.delete('/:agent_id/group/:group_id', function(req, res) {
     data_request['arguments']['agent_id'] = req.params.agent_id;
     data_request['arguments']['group_id'] = req.params.group_id;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -1026,7 +1026,7 @@ router.delete('/group/:group_id', function(req, res) {
     }
 
     if ('ids' in req.query){
-        execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+        execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
     }else
         res_h.bad_request(req, res, 604, "Missing field: 'ids'");
 })
@@ -1053,7 +1053,7 @@ router.delete('/groups/:group_id', function(req, res) {
         return;
 
     data_request['arguments']['group_id'] = req.params.group_id;
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 /**
@@ -1106,7 +1106,7 @@ router.delete('/', function(req, res) {
     if ('status' in req.query)
         data_request['arguments']['status'] = req.query.status;
 
-    execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+    execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
 })
 
 
@@ -1165,7 +1165,7 @@ router.post('/', function(req, res) {
         if ('force' in req.body){
             data_request['arguments']['force'] = req.body.force;
         }
-        execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+        execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
     }else
         res_h.bad_request(req, res, 604, "Missing field: 'name'");
 })
@@ -1230,7 +1230,7 @@ router.post('/insert', function(req, res) {
     }
 
     if ('id' in req.body && 'name' in req.body && 'ip' in req.body && 'key' in req.body){
-        execute.exec(python_bin, [wazuh_control], data_request, function (data) { res_h.send(req, res, data); });
+        execute.exec(python_bin, [cyb3rhq_control], data_request, function (data) { res_h.send(req, res, data); });
     }else
         res_h.bad_request(req, res, 604, "Missing fields. Mandatory fields: id, name, ip, key");
 })

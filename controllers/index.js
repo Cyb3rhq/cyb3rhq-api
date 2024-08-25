@@ -1,7 +1,7 @@
 /**
- * Wazuh RESTful API
- * Copyright (C) 2015-2020 Wazuh, Inc. All rights reserved.
- * Wazuh.com
+ * Cyb3rhq RESTful API
+ * Copyright (C) 2015-2020 Cyb3rhq, Inc. All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -16,7 +16,7 @@ execute = require('../helpers/execute');
 templates = require('../helpers/request_templates');
 apicache  = require('apicache');
 cache     = apicache.middleware;
-wazuh_control = api_path + "/models/wazuh-api.py";
+cyb3rhq_control = api_path + "/models/cyb3rhq-api.py";
 
 var router = require('express').Router();
 var os = require("os");
@@ -96,7 +96,7 @@ if (config.experimental_features){
 // Index
 router.get('/',function(req, res) {
     logger.debug(req.connection.remoteAddress + " GET /");
-    data = { 'msg': "Welcome to Wazuh HIDS API", 'api_version': "v" + info_package.version, 'hostname': os.hostname(), 'timestamp': new Date().toString()}
+    data = { 'msg': "Welcome to Cyb3rhq HIDS API", 'api_version': "v" + info_package.version, 'hostname': os.hostname(), 'timestamp': new Date().toString()}
     json_res = {'error': 0, 'data': data};
     res_h.send(req, res, json_res);
 });

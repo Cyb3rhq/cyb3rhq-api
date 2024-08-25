@@ -1,7 +1,7 @@
 /**
  * API RESTful for OSSEC
- * Copyright (C) 2015-2016 Wazuh, Inc.All rights reserved.
- * Wazuh.com
+ * Copyright (C) 2015-2016 Cyb3rhq, Inc.All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -4544,9 +4544,9 @@ describe('Syscollector', function () {
         agent_hotfixes = '001'
         hotfixes_fields = ['scan', 'hotfix']
         scan_fields = ['id', 'time']
-        // for writing in agent database through Wazuh DB
+        // for writing in agent database through Cyb3rhq DB
         const {spawn} = require('child_process')
-        // path to script which send a query to WazuhDB
+        // path to script which send a query to Cyb3rhqDB
         var wdb_script_path = __dirname + '/utils/send_to_wdb.py'
 
         // insert test data into DB

@@ -1,7 +1,7 @@
 /**
  * API RESTful for OSSEC
- * Copyright (C) 2015-2016 Wazuh, Inc.All rights reserved.
- * Wazuh.com
+ * Copyright (C) 2015-2016 Cyb3rhq, Inc.All rights reserved.
+ * Cyb3rhq.com
  *
  * This program is a free software; you can redistribute it
  * and/or modify it under the terms of the GNU General Public
@@ -181,7 +181,7 @@ describe('Agents', function() {
             .expect("Content-type",/json/)
             .expect(200)
             .end(function(err,res){
-              expected_version="Wazuh "+String(res.body.data);
+              expected_version="Cyb3rhq "+String(res.body.data);
               done();
             });
         });
@@ -2895,7 +2895,7 @@ describe('Agents', function() {
                 res.body.should.have.properties(['error', 'data']);
                 res.body.data.should.have.properties(['wmodules']);
                 //res.body.data.wmodules.should.have.properties(['open-scap', 'cis-cat',
-                //'osquery', 'syscollector', 'database', 'wazuh_download']);
+                //'osquery', 'syscollector', 'database', 'cyb3rhq_download']);
                 res.body.data.wmodules[0].should.have.properties(['open-scap']);
                 res.body.data.wmodules[1].should.have.properties(['cis-cat']);
                 res.body.data.wmodules[2].should.have.properties(['osquery']);
