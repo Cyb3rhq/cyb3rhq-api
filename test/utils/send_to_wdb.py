@@ -3,7 +3,7 @@
 # -*- coding: UTF-8 -*-
 #
 # Copyright (C) 2015-2020, Cyb3rhq Inc.
-# Created by Cyb3rhq, Inc. <info@cyb3rhq.com>.
+# Created by Cyb3rhq, Inc. <info@wazuh.com>.
 # This program is free software; you can redistribute
 # it and/or modify it under the terms of GPLv2
 

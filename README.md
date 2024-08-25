@@ -1,9 +1,9 @@
 # Cyb3rhq RESTful API
 
-[![Slack](https://img.shields.io/badge/slack-join-blue.svg)](https://cyb3rhq.com/community/join-us-on-slack/)
+[![Slack](https://img.shields.io/badge/slack-join-blue.svg)](https://wazuh.com/community/join-us-on-slack/)
 [![Email](https://img.shields.io/badge/email-join-blue.svg)](https://groups.google.com/forum/#!forum/cyb3rhq)
-[![Documentation](https://img.shields.io/badge/docs-view-green.svg)](https://documentation.cyb3rhq.com)
-[![Documentation](https://img.shields.io/badge/web-view-green.svg)](https://cyb3rhq.com)
+[![Documentation](https://img.shields.io/badge/docs-view-green.svg)](https://documentation.wazuh.com)
+[![Documentation](https://img.shields.io/badge/web-view-green.svg)](https://wazuh.com)
 
 Cyb3rhq API is an open source RESTful API to interact with Cyb3rhq from your own application or with a simple web browser or tools like cURL.
 
@@ -25,15 +25,15 @@ Cyb3rhq API capabilities:
 
 #### How to install
 
-[Installation guide](https://documentation.cyb3rhq.com/current/installation-guide/installing-cyb3rhq-manager/index.html)
+[Installation guide](https://documentation.wazuh.com/current/installation-guide/installing-cyb3rhq-manager/index.html)
 
 #### Request reference
 
-[Full request reference](https://documentation.cyb3rhq.com/current/user-manual/api/reference.html#request-list)
+[Full request reference](https://documentation.wazuh.com/current/user-manual/api/reference.html#request-list)
 
 #### Full documentation
 
-[Full documentation](https://documentation.cyb3rhq.com/current/user-manual/api/index.html)
+[Full documentation](https://documentation.wazuh.com/current/user-manual/api/index.html)
 
 ## Branches
 
@@ -48,6 +48,6 @@ If you want to contribute to our project please don't hesitate to send a pull re
 
 ## References
 
-* [Cyb3rhq website](http://cyb3rhq.com)
+* [Cyb3rhq website](http://wazuh.com)
 * [Cyb3rhq repositories](http://github.com/cyb3rhq)
-* [Cyb3rhq documentation](http://documentation.cyb3rhq.com)
+* [Cyb3rhq documentation](http://documentation.wazuh.com)

@@ -1,7 +1,7 @@
 [cyb3rhq_repo]
 gpgcheck=1
-gpgkey=https://packages.cyb3rhq.com/key/GPG-KEY-CYB3RHQ
+gpgkey=https://packages.wazuh.com/key/GPG-KEY-CYB3RHQ
 enabled=1
 name=Cyb3rhq repository
-baseurl=https://packages.cyb3rhq.com/3.x/yum/
+baseurl=https://packages.wazuh.com/3.x/yum/
 protect=1

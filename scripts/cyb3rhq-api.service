@@ -9,7 +9,7 @@
 
 [Unit]
 Description=Cyb3rhq API daemon
-Documentation=https://documentation.cyb3rhq.com/current/user-manual/api/index.html
+Documentation=https://documentation.wazuh.com/current/user-manual/api/index.html
 After=network-online.target
 
 [Service]

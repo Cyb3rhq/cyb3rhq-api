@@ -12,7 +12,7 @@
 
 # How to use OSSEC Cyb3rhq RESTful API from Python
 # Requests module: http://docs.python-requests.org/
-# Documentation: https://documentation.cyb3rhq.com/current/user-manual/api/index.html
+# Documentation: https://documentation.wazuh.com/current/user-manual/api/index.html
 
 import json
 import sys

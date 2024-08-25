@@ -6,8 +6,8 @@ node_name=$3
 cyb3rhq_api_folder=$4
 
 apt-get update
-curl -s https://s3-us-west-1.amazonaws.com/packages-dev.cyb3rhq.com/key/GPG-KEY-CYB3RHQ | apt-key add -
-echo "deb https://s3-us-west-1.amazonaws.com/packages-dev.cyb3rhq.com/pre-release/apt/ unstable main" | tee -a /etc/apt/sources.list.d/cyb3rhq_pre_release.list
+curl -s https://s3-us-west-1.amazonaws.com/packages-dev.wazuh.com/key/GPG-KEY-CYB3RHQ | apt-key add -
+echo "deb https://s3-us-west-1.amazonaws.com/packages-dev.wazuh.com/pre-release/apt/ unstable main" | tee -a /etc/apt/sources.list.d/cyb3rhq_pre_release.list
 
 apt-get update
 apt-get install cyb3rhq-manager -y

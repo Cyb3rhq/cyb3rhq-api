@@ -10,7 +10,7 @@
 ###
 
 # How to use OSSEC Cyb3rhq RESTful API from PowerShell 3.0+
-# Documentation: https://documentation.cyb3rhq.com/current/user-manual/api/index.html
+# Documentation: https://documentation.wazuh.com/current/user-manual/api/index.html
 
 function Ignore-SelfSignedCerts {
     add-type @"

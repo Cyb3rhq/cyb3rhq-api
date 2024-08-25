@@ -79,12 +79,12 @@
             </socket>
             ```
         * Mail:
-            1. Follow steps detailed [here](https://documentation.cyb3rhq.com/current/user-manual/manager/manual-email-report/smtp_authentication.html).
+            1. Follow steps detailed [here](https://documentation.wazuh.com/current/user-manual/manager/manual-email-report/smtp_authentication.html).
             2.
             ```xml
             <global>
                 <email_notification>yes</email_notification>
-                <email_to>hello@cyb3rhq.com</email_to>
+                <email_to>hello@wazuh.com</email_to>
                 <smtp_server>localhost</smtp_server>
                 <email_from>cyb3rhq@test.com</email_from>
             </global>
